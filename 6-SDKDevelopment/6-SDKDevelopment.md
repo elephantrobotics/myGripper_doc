@@ -1,305 +1,305 @@
-# python开发
+# python development
 
-**USB-485模块接线**：
+**USB-485 module wiring**:
 
-连接灵巧手端的 24V，GND, 485_A(T/R+,485+) , 485_B(T/R-,485-)共 4 根线，电源为24V直流稳压电源，将模块的 USB 插口插入到电脑的 USB 接口
+Connect the 24V, GND, 485_A (T/R+, 485+), 485_B (T/R-, 485-) of the smart hand end, a total of 4 wires, the power supply is a 24V DC regulated power supply, and insert the USB port of the module into the USB port of the computer
 
 <img src="../img/new485.png" width="50%" >
 
-485A 接入 485 转 USB 模块 A+;<br>
-485B 接入 485 转 USB 模块 B-;<br>
-24V 接入 24V 直流稳压电源正极;<br>
-GND 接入 24V 直流稳压电源负极<br>
+485A connects to the 485 to USB module A+;<br>
+485B connects to the 485 to USB module B-;<br>
+24V connects to the positive pole of the 24V DC regulated power supply;<br>
+GND connects to 24V Negative pole of DC regulated power supply<br>
 
-**驱动库安装**
-[点击下载驱动库](https://github.com/elephantrobotics/Myhand)
+**Driver library installation**
+[Click to download the driver library](https://github.com/elephantrobotics/Myhand)
 
 <img src="../img/git.png" width="50%" >
 
-##### 串口依赖库安装
-在电脑终端执行下面命令，安装依赖库
+##### Serial port dependency library installation
+Execute the following command in the computer terminal to install the dependency library
 ```bash
 pip install pyserial
 ```
-## API说明
+## API description
 
 ### get_gripper_firmware_version()
 
-- **功能:** 获取夹爪固件主版本号
-- **参数:** 无
-- **返回:** `(int)`固件主版本号
+- **Function:** Get the gripper firmware major version number
+- **Parameter:** None
+- **Return:** `(int)` Firmware major version number
 
 ### get_gripper_modified_version()
 
-- **功能:** 获取夹爪固件次版本号
-- **参数:** 无
-- **返回:** `(int)`固件次版本号
+- **Function:** Get the gripper firmware minor version number
+- **Parameter:** None
+- **Return:** `(int)` Firmware minor version number
 
 ### get_gripper_gripper_Id()
 
-- **功能:** 获取夹爪ID
-- **参数:** 无
-- **返回:** `(int)`夹爪ID
-
+- **Function:** Get the gripper ID
+- **Parameter:** None
+- **Return:** `(int)` Gripper ID
 
 ### get_gripper_gripper_baud()
 
-- **功能:** 获取夹爪波特率
-- **参数:** 无
-- **返回:**`(int)` 0-5
-    - `0`: 115200
-    - `1`: 1000000
-    - `2`: 57600
-    - `3`: 19200
-    - `4`: 9600
-    - `5`: 4800
+- **Function:** Get the gripper baud rate
+- **Parameter:** None
+- **Return:** `(int)` 0-5
+  - `0`: 115200
+  - `1`: 1000000
+  - `2`: 57600
+  - `3`: 19200
+  - `4`: 9600
+  - `5`: 4800
 
 ### get_gripper_joint_angle(id)
 
-- **功能:** 获取夹爪的当前位置数据信息
-- **参数:** `id`: `(int)` 夹爪关节ID,取值范围 `1-6`  
-- **返回:** `(int)`夹爪关节ID的当前位置数据
+- **Function:** Get the current position data of the gripper
+- **Parameter:** `id`: `(int)` Gripper joint ID, value range `1-6`
+- **Return:** `(int)` Current position data of the gripper joint ID
 
 ### get_gripper_status()
 
-- **功能:** 获取夹爪的当前状态
-- **参数:** 无
-- **返回:**`(int)` 0-3
-    - `0`:  正在运动
-    - `1`: 停止运动,未检测到夹到物体
-    - `2`: 停止运动,检测到夹到了物体
-    - `3`: 检测到夹到物体以后,物体掉落
+- **Function:** Get the current status of the gripper
+- **Parameter:** None
+- **Return:** `(int)` 0-3
+  - `0`: Moving
+  - `1`: Stopped moving, no object was detected
+  - `2`: Stopped moving, object was detected
+  - `3`: After the object was detected, the object fell
 
 ### get_gripper_joint_speed(id)
 
-- **功能:** 获取夹爪关节ID的当前速度
-- **参数:** `id`: `(int)` 夹爪关节ID,取值范围 `1-6`  
-- **返回:** `(int)`夹爪关节ID的当前速度
+- **Function:** Get the current speed of the gripper joint ID
+- **Parameter:** `id`: `(int)` Gripper joint ID, value range `1-6`
+- **Return:** `(int)` Current speed of the gripper joint ID
 
 ### get_gripper_joint_P(id)
 
-- **功能:** 获取夹爪关节ID的PID的P值
-- **参数:** `id`: `(int)` 夹爪关节ID,取值范围 `1-6`  
-- **返回:** `(int)`夹爪关节ID的PID的P值
+- **Function:** Get the P value of the PID of the gripper joint ID
+- **Parameter:** `id`: `(int)` Gripper joint ID, value range `1-6`
+- **Return:** `(int)` The P value of the PID of the gripper joint ID
 
 ### get_gripper_joint_I(id)
 
-- **功能:** 获取夹爪关节ID的PID的I值
-- **参数:** `id`: `(int)` 夹爪关节ID,取值范围 `1-6`
-- **返回:** `(int)`夹爪关节ID的PID的I值
+- **Function:** Get the I value of the PID of the gripper joint ID
+- **Parameter:** `id`: `(int)` Gripper joint ID, value range `1-6`
+- **Return:** `(int)` The I value of the PID of the gripper joint ID
 
 ### get_gripper_joint_D(id)
 
-- **功能:** 获取夹爪关节ID的PID的D值
-- **参数:** `id`: `(int)` 夹爪关节ID,取值范围 `1-6`
-- **返回:** `(int)`夹爪关节ID的PID的D值
+- **Function:** Get the D value of the PID of the gripper joint ID
+
+- **Parameter:** `id`: `(int)` Gripper joint ID, value range `1-6`
+- **Return:** `(int)` The D value of the PID of the gripper joint ID
 
 ### get_gripper_joint_cw(id)
 
-- **功能:** 获取夹爪关节ID的顺时针可运行误差
-- **参数:** `id`: `(int)` 夹爪关节ID,取值范围 `1-6`
-- **返回:** `(int)`夹爪关节ID的顺时针可运行误差
+- **Function:** Get the clockwise runnable error of the gripper joint ID
+
+- **Parameter:** `id`: `(int)` Gripper joint ID, value range `1-6`
+- **Return:** `(int)` The clockwise runnable error of the gripper joint ID
 
 ### get_gripper_joint_cww(id)
 
-- **功能:** 获取夹爪关节ID的逆时针可运行误差
-- **参数:** `id`: `(int)` 夹爪关节ID,取值范围 `1-6`
-- **返回:** `(int)`夹爪关节ID的逆时针可运行误差
+- **Function:** Get the counterclockwise runnable error of the gripper joint ID
+
+- **Parameter:** `id`: `(int)` Gripper joint ID, value range `1-6`
+- **Return:** `(int)` Anti-clockwise runnable error of the gripper joint ID
 
 ### get_gripper_joint_mini_pressure(id)
 
-- **功能:** 获取夹爪关节ID的最小启动力
-- **参数:** `id`: `(int)` 夹爪关节ID,取值范围 `1-6`
-- **返回:** `(int)`夹爪关节ID的最小启动力
+- **Function:** Get the minimum starting force of the gripper joint ID
+
+- **Parameter:** `id`: `(int)` Gripper joint ID, value range `1-6`
+- **Return:** `(int)` Minimum starting force of the gripper joint ID
 
 ### get_gripper_joint_mini_pressure(id)
 
-- **功能:** 获取夹爪关节ID的最小启动力
-- **参数:** `id`: `(int)` 夹爪关节ID,取值范围 `1-6`
-- **返回:** `(int)`夹爪关节ID的最小启动力
+- **Function:** Get the minimum starting force of the gripper joint ID
+
+- **Parameter:** `id`: `(int)` Gripper joint ID, value range `1-6`
+- **Return:** `(int)` Minimum starting force of the gripper joint ID
 
 ### get_gripper_angles()
 
-- **功能:** 获取夹爪6个关节的角度
-- **参数:** `id`: `(int)` 夹爪关节ID,取值范围 `1-6`
-- **返回:** `(list)`夹爪6个关节的角度
+- **Function:** Get the angles of the 6 joints of the gripper
+
+- **Parameter:** `id`: `(int)` Gripper joint ID, value range `1-6`
+- **Return:** `(list)` Angles of the 6 joints of the gripper
 
 ### set_gripper_Id(value)
 
-- **功能:** 设置夹爪ID号
-- **参数:** 
-  - `value`: `(int)` 夹爪ID,取值范围 `1-254`
-- **返回:**`(int)` 0-1
-  - `0`: 失败
-  - `1`: 成功
+- **Function:** Set the gripper ID number
+- **Parameter:**
+  - `value`: `(int)` Gripper ID, value range `1-254`
+- **Return:** `(int)` 0-1
+  - `0`: Failed
+  - `1`: Successful
 
 ### set_gripper_baud(value)
 
-- **功能:** 设置夹爪波特率
-- **参数:** 
-  - `value`: `(int)` 夹爪波特率,取值范围 `0-5`
+- **Function:** Set the gripper baud rate
+- **Parameter:**
+  - `value`: `(int)` Gripper baud rate, value range `0-5`
     - `0`: 115200
     - `1`: 1000000
     - `2`: 57600
     - `3`: 19200
     - `4`: 9600
     - `5`: 4800
-- **返回:**`(int)` 0-1
-  - `0`: 失败
-  - `1`: 成功
-  
+- **Return:**`(int)` 0-1
+  - `0`: Failed
+  - `1`: Success
+
 ### set_gripper_enable(value)
 
-- **功能:** 设置夹爪使能状态
-- **参数:** 
-  - `value`: `(int)` 使能状态,取值范围 `0-1`
-    - `0`: 掉使能
-    - `1`: 上使能
-- **返回:**`(int)` 0-1
-  - `0`: 失败
-  - `1`: 成功
-
-<!-- ### set_gripper_value(value,speed)
-
-- **功能:** 设置夹爪以指定的速度转动到指定的位置
-- **参数:** 
-  - `value`: `(int)` 位置,取值范围 `0-100`
-  - `speed`: `(int)` 速度,取值范围 `1-100` 
-- **返回:**`(int)` 0-1
-  - `0`: 失败
-  - `1`: 成功 -->
+- **Function:** Set the gripper enable state
+- **Parameter:**
+  - `value`: `(int)` Enable state, value range `0-1`
+    - `0`: Disable
+    - `1`: Enable
+- **Return:**`(int)` 0-1
+  - `0`: Failed
+  - `1`: Success
 
 ### set_gripper_joint_calibration(id)
 
-- **功能:** 设置夹爪关节ID零位校准
-- **参数:** `id`: `(int)` 夹爪关节ID,取值范围 `1-6`
-- **返回:**`(int)` 0-1
-  - `0`: 失败
-  - `1`: 成功
+- **Function:** Set the gripper joint ID zero calibration
+- **Parameter:** `id`: `(int)` Gripper joint ID, value range `1-6`
+- **Return:**`(int)` 0-1
+  - `0`: Failed
+  - `1`: Success
 
 ### set_gripper_joint_P(id,value)
 
-- **功能:** 设置夹爪关节ID的PID的P值
-- **参数:** 
-  - `id`: `(int)` 关节ID,取值范围 `1-6`
-  - `value`: `(int)` P值,取值范围 `0-254`
-- **返回:**`(int)` 0-1
-  - `0`: 失败
-  - `1`: 成功
+- **Function:** Set the P value of the PID of the gripper joint ID
+
+- **Parameters:**
+  - `id`: `(int)` Joint ID, value range `1-6`
+  - `value`: `(int)` P value, value range `0-254`
+- **Return:** `(int)` 0-1
+  - `0`: Failed
+  - `1`: Success
 
 ### set_gripper_joint_I(id,value)
 
-- **功能:** 设置夹爪关节ID的PID的I值
-- **参数:** 
-  - `id`: `(int)` 关节ID,取值范围 `1-6`
-  - `value`: `(int)` I值,取值范围 `0-254`
-- **返回:**`(int)` 0-1
-  - `0`: 失败
-  - `1`: 成功
+- **Function:** Set the I value of the PID of the gripper joint ID
+
+- **Parameters:**
+  - `id`: `(int)` Joint ID, value range `1-6`
+  - `value`: `(int)` I value, value range `0-254`
+- **Return:** `(int)` 0-1
+  - `0`: Failed
+  - `1`: Success
 
 ### set_gripper_joint_D(id,value)
 
-- **功能:** 设置夹爪关节ID的PID的D值
-- **参数:**
-  - `id`: `(int)` 关节ID,取值范围 `1-6` 
-  - `value`: `(int)` D值,取值范围 `0-254`
-- **返回:**`(int)` 0-1
-  - `0`: 失败
-  - `1`: 成功
+- **Function:** Set the D value of the PID of the gripper joint ID
+
+- **Parameters:**
+  - `id`: `(int)` Joint ID, value range `1-6`
+  - `value`: `(int)` D value, value range `0-254`
+- **Return:** `(int)` 0-1
+  - `0`: Failed
+  - `1`: Success
 
 ### set_gripper_joint_cw(id,value)
 
-- **功能:** 设置夹爪关节ID的顺时针可运行误差
-- **参数:**
-  - `id`: `(int)` 关节ID,取值范围 `1-6`  
-  - `value`: `(int)` 误差,取值范围 `0-16`
-- **返回:**`(int)` 0-1
-  - `0`: 失败
-  - `1`: 成功
+- **Function:** Set the clockwise runnable error of the gripper joint ID
+
+- **Parameters:**
+  - `id`: `(int)` Joint ID, value range `1-6`
+  - `value`: `(int)` Error, value range `0-16`
+- **Return:** `(int)` 0-1
+  - `0`: Failed
+  - `1`: Success
 
 ### set_gripper_joint_cww(id,value)
 
-- **功能:** 设置夹爪关节ID的逆时针可运行误差
-- **参数:**
-  - `id`: `(int)` 关节ID,取值范围 `1-6` 
-  - `value`: `(int)` 误差,取值范围 `0-16`
-- **返回:**`(int)` 0-1
-  - `0`: 失败
-  - `1`: 成功
+- **Function:** Set the counterclockwise runnable error of the gripper joint ID
+
+- **Parameters:**
+  - `id`: `(int)` Joint ID, value range `1-6`
+  - `value`: `(int)` Error, value range `0-16`
+- **Return:** `(int)` 0-1
+  - `0`: Failed
+  - `1`: Success
 
 ### set_gripper_joint_mini_pressure(id,value)
 
-- **功能:** 设置夹爪关节ID的最小启动力
-- **参数:**
-  - `id`: `(int)` 关节ID,取值范围 `1-6` 
-  - `value`: `(int)` 最小启动力,取值范围 `0-254`
-- **返回:**`(int)` 0-1
-  - `0`: 失败
-  - `1`: 成功
+- **Function:** Set the minimum starting force of the gripper joint ID
+
+- **Parameters:**
+  - `id`: `(int)` Joint ID, value range `1-6`
+  - `value`: `(int)` Minimum starting force, value range `0-254`
+- **Return:** `(int)` 0-1
+  - `0`: Failed
+  - `1`: Success
 
 ### set_gripper_joint_torque(id,value)
 
-- **功能:** 设置夹爪关节ID的扭矩
-- **参数:**
-  - `id`: `(int)` 关节ID,取值范围 `1-6` 
-  - `value`: `(int)` 扭矩,取值范围 `0-300`
-- **返回:**`(int)` 0-1
-  - `0`: 失败
-  - `1`: 成功
-
+- **Function:** Set the torque of the gripper joint ID
+- **Parameters:**
+  - `id`: `(int)` Joint ID, value range `1-6`
+  - `value`: `(int)` Torque, value range `0-300`
+- **Return:** `(int)` 0-1
+  - `0`: Failed
+  - `1`: Success
 
 ### set_gripper_joint_speed(id,speed)
 
-- **功能:** 设置夹爪关节ID的速度
-- **参数:**
-  - `id`: `(int)` 关节ID,取值范围 `1-6` 
-  - `speed`: `(int)` 速度,取值范围 `1-100`
-- **返回:**`(int)` 0-1
-  - `0`: 失败
-  - `1`: 成功
+- **Function:** Set the speed of the gripper joint ID
+- **Parameters:**
+  - `id`: `(int)` Joint ID, value range `1-6`
+  - `speed`: `(int)` Speed, value range `1-100`
+- **Return:** `(int)` 0-1
+  - `0`: Failed
+  - `1`: Success
 
 ### set_gripper_angles(angles,speed)
 
-- **功能:** 设置夹爪全关节角度
-- **参数:** 
-  - `angles`: `(list)` 6个关节角度,每个关节角度取值范围 `0-100`
-  - `speed`: `(int)` 速度,取值范围 `1-100`
-- **返回:**`(int)` 0-1
-  - `0`: 失败
-  - `1`: 成功
-
+- **Function:** Set the angle of all joints of the gripper
+- **Parameters:**
+  - `angles`: `(list)` 6 joint angles, each joint angle has a value range of `0-100`
+  - `speed`: `(int)` speed, value range of `1-100`
+- **Return:** `(int)` 0-1
+  - `0`: Failed
+  - `1`: Successful
 
 ### set_gripper_action(value)
 
-- **功能:** 设置夹爪捏合动作
-- **参数:** 
-  - `value`: `(int)` 动作,取值范围 `0-3`
-    - `0`：食指与拇指捏合
-    - `1`: 中指于拇指捏合
-    - `2`: 三指握住
-    - `3`: 双指夹持
-- **返回:**`(int)` 0-1
-  - `0`: 失败
-  - `1`: 成功
+- **Function:** Set the gripper pinching action
+- **Parameters:**
+  - `value`: `(int)` action, value range of `0-3`
+    - `0`: Index finger and thumb pinching
+    - `1`: Middle finger and thumb pinching
+    - `2`: Three-finger gripping
+    - `3`: Two-finger gripping
+- **Return:** `(int)` 0-1
+  - `0`: Failed
+  - `1`: Success
 
 ### set_gripper_pose(pose,value,flag)
 
-- **功能:** 设置夹爪捏合动作及开合程度
-- **参数:** 
-  - `pose`: `(int)` 动作,取值范围 `0-4`
-    - `0`：全关节回零
-    - `1`：食指与拇指捏合
-    - `2`: 中指与拇指捏合
-    - `3`: 中指与食指捏合
-    - `4`: 三指捏合
-  - `value`: `(int)` 开合程度,取值范围 `0-15`,合拢程度,等级越高越合拢
-  - `flag`: `(int)` 空闲标志,标志1时,空闲手指可自由操控
-    
-- **返回:**`(int)` 0-1
-  - `0`: 失败
-  - `1`: 成功
+- **Function:** Set the gripper pinching action and opening and closing degree
 
-#### 测试程序
+- **Parameters:**
+  - `pose`: `(int)` Action, value range `0-4`
+    - `0`: All joints return to zero
+    - `1`: Index finger and thumb pinching
+    - `2`: Middle finger and thumb pinching
+    - `3`: Middle finger and index finger pinching
+    - `4`: Three-finger pinching
+  - `value`: `(int)` Opening and closing degree, value range `0-15`, closing degree, the higher the level, the closer it is
+- `flag`: `(int)` Idle flag, when flag 1, the idle finger can be freely controlled
+
+- **Return:** `(int)` 0-1
+  - `0`: Failure
+  - `1`: Success
+
+#### Testing Procedure
 
 
 ```python
@@ -320,6 +320,6 @@ if __name__=="__main__":
     hand.set_gripper_pose(0,0)
     time.sleep(2)
 ```
-#### 效果展示
+#### Effect display
 
 <img src="../img/demo1.gif" width="70%" >

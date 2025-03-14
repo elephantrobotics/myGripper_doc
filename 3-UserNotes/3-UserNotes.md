@@ -1,56 +1,47 @@
-# 用户须知
-## 1 简介
-&emsp;&emsp;本章详细介绍了有关对大象机器人执行安装、维护和维修工作的人员的常规安全信息。请在搬运、安装和使用前，先充分阅读和理解本章节的内容与注意事项。
+# User Notice
+## 1 Introduction
+&emsp;&emsp;This chapter details general safety information for personnel who perform installation, maintenance, and repair work on the Elephant robot. Please fully read and understand the contents and precautions in this chapter before handling, installing, and using it.
 
-## 2 危险识别
-&emsp;&emsp;协作机器人的安全性建立在正确配置和使用机器人的前提上。并且，即使遵守所有的安全指示，操作者所造成的伤害或损伤依然有可能发生。因此，了解机器人使用的安全隐患是非常重要的，有利于防患于未然。
-&emsp;以下表 1-1~3 是使用机器人的情境下可能存在的常见安全隐患:
+## 2 Hazard Identification
+&emsp;&emsp;The safety of collaborative robots is based on the correct configuration and use of the robots. Moreover, even if all safety instructions are followed, harm or injury to the operator may still occur. Therefore, it is very important to understand the safety hazards of robot use, which is conducive to preventing them before they occur.
+&emsp;The following tables 1-1~3 are common safety hazards that may exist in the context of using robots:
 
-<center> <strong>表 1-1 危险级安全隐患</strong></center>
+<center> <strong>Table 1-1 Dangerous safety hazards</strong></center>
 
-|<div align=center><img src="../img/weixian.png" alt="img-1" width="100" height=“auto” />| 
+|<div align=center><img src="../img/weixian.png" alt="img-1" width="100" height="auto" />|
 | :--- |
-| 1、机器人搬运过程中的错误操作导致的人身伤害或者机器人损伤。 |
-| 2、未按要求固定机器人，例如螺钉缺少或螺钉未上紧、底座锁付能力不足以稳定支撑机器人进行高速运动等造成机器人倾倒导致人身伤害或者机器人损伤。 |
-| 3、未进行机器人的正确安全功能配置，或者少安装了安全防护工具等，造成机器人安全功能未能发挥作用，从而引起危险。 |
+| 1. Personal injury or robot damage caused by incorrect operation during robot handling. |
+| 2. Failure to fix the robot as required, such as lack of screws or screws not tightened, insufficient base locking capacity to stably support the robot for high-speed movement, etc., causing the robot to fall over and cause personal injury or robot damage. |
+| 3. Failure to configure the correct safety function of the robot, or insufficient installation of safety protection tools, etc., causing the robot's safety function to fail to function, thereby causing danger. |
 
+<center> <strong>Table 1-2 Warning-level safety hazards</strong></center>
 
-
-
-<center> <strong>表 1-2 警告级安全隐患</strong></center>
-
-|<div align=center><img src="../img/jigao.png" alt="img-1" width="100" height=“auto” />| 
+|<div align=center><img src="../img/jigao.png" alt="img-1" width="100" height="auto" />|
 | :--- |
-| 1、调试程序时请勿在机器人运动范围内逗留，不合适的安全配置可能无法避免可能造成人身伤害的碰撞。 |
-| 2、机器人与其他设备连接可能引发新的危险，需要重新进行全面的风险评估。 |
-| 3、因工作环境中的其他设备或者机器人末端执行器等尖锐表面造成刮伤、刺伤。 |
-| 4、机器人是精密机械，踩踏可能造成机器人损伤。 |
-| 5、夹持不到位或关闭机器人电源、气源前（未确定末端执行器是否牢固夹持物因为失去动力而掉下）未将夹持的物体取下，可能会引起危险，例如末端执行器损坏、人被砸伤等。 |
-| 6、机器人存在意外移动的风险，在任何情况下，切勿站在机器人任何轴的下方! |
-| 7、机器人是精密机械，搬运时不能平稳放置可能会引起振动，可能会引起机器人内部部件的损伤。 |
-| 8、机器人与普通机械设备相比自由度更多、运动范围更大，不满足运动范围可能会引起意外的碰撞。 |
+| 1. Do not stay in the robot's range of motion when debugging the program. Improper safety configuration may not be able to avoid collisions that may cause personal injury. |
+| 2. Connecting the robot to other equipment may cause new dangers, and a comprehensive risk assessment needs to be re-performed. |
+| 3. Scratches and punctures caused by sharp surfaces such as other equipment or the robot's end effector in the working environment. |
+| 4. The robot is a precision machine, and stepping on it may cause damage to the robot. |
+| 5. Failure to remove the clamped object before clamping it in place or turning off the robot's power or air source (not confirming whether the end effector is firm and the clamped object falls due to loss of power) may cause dangers, such as damage to the end effector and injuries to people. |
+| 6. The robot has the risk of accidental movement. Do not stand under any axis of the robot under any circumstances! |
+| 7. The robot is a precision machine. If it is not placed stably during transportation, it may cause vibration and damage to the internal parts of the robot. |
+| 8. Compared with ordinary mechanical equipment, the robot has more degrees of freedom and a larger range of motion. Failure to meet the range of motion may cause unexpected collisions. |
 
+<center> <strong>Table 1-3 Safety hazards that may cause electric shock</strong></center>
 
-
-<center> <strong>表 1-3 有可能导致触电的安全隐患</strong></center>
-
-|<div align=center><img src="../img/chudian.png" alt="img-1" width="100" height=“auto” />| 
+|<div align=center><img src="../img/chudian.png" alt="img-1" width="100" height="auto" />|
 | :--- |
-| 1、使用非原装电缆可能会引发未知危险。 |
-| 2、用电设备接触液体可能导致漏电危险。 |
-| 3、电气连接错误时可能存在触电隐患。 |
-| 4、请务必在关闭控制器与相关装置电源并拔出电源插头之后进行更换作业。如果在通电的状态下进行作业，则可能会导致触电或故障。 |
+| 1. Using non-original cables may cause unknown dangers. |
+| 2. Electrical equipment contacting liquids may cause leakage hazards. |
+| 3. There may be a risk of electric shock when the electrical connection is wrong. |
+| 4. Please be sure to turn off the power of the controller and related devices and unplug the power plug before replacing. If the operation is performed while the power is on, it may cause electric shock or malfunction. |
 
+## 3 Precautions
+**The following rules should be followed when using the three-finger dexterous hand:**
+* Please distinguish the line sequence according to the line mark. If the line mark is lost, detached, or forgotten, please contact our staff to cooperate in determining the line sequence. If you do not contact our staff, <span style="color:red;font-weight:bold;">you will be responsible for the damage to the dexterous hand due to the wrong line sequence</span>
+* Please do not burn other product drivers or use unofficial recommended methods to burn firmware. <span style="color:red;font-weight:bold;">If the device is damaged due to the user's personal burning of other firmware, it will not be covered by after-sales service. </span>
+* <span style="color:red;font-weight:bold;">If the surface of the dexterous hand is stained due to use, it is recommended to wipe it gently with clean water. To avoid coating damage, do not use alcohol solvents to clean the shell and finger sleeves. </span>If the surface is damaged due to the use of alcohol-based cleaners and needs to be repaired or replaced, our company will charge the corresponding repair fee according to the terms of the contract
 
-## 3 注意事项
-**使用三指灵巧手时应遵循如下规则：**
-* 请根据线标区分线序，如出现线标丢失、脱落、遗忘等情况，请联系我司工作人员，配合确定线序。如不联系我司工作人员，<span style="color:red;font-weight:bold;">因接错线序，导致灵巧手损坏，后果自负</span>
-* 请勿擅自烧录其他产品驱动、或使用非官方推荐方式烧录固件。<span style="color:red;font-weight:bold;">如因用户个人烧录其他固件导致设备损坏将不在售后服务内。</span>
-* <span style="color:red;font-weight:bold;">灵巧手表面若遇使用导致表面污渍，建议以清水轻拭。为避免涂层损伤，请勿使用酒精类溶剂清洁外壳及指套。</span>若因使用酒精类清洁剂导致表面损伤需维修更换，我司将依据合同条款收取相应维修费用
-
-**如对内容有任何疑问和建议，可登录大象机器人官方网站提交相关信息：**
+**If you have any questions or suggestions about the content, you can log in to the official website of Elephant Robotics to submit relevant information:**
 
 https://www.elephantrobotics.com
-
-
-

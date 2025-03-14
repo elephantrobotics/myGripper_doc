@@ -1,19 +1,19 @@
-# 1 产品介绍
+# 1 Product Introduction
 
 <img src="../img/myhand.png" width="50%" >
 
-myGripper H100 是深圳市大象机器人科技有限公司专门为机器人科研、教学等应用场景所开发的一款三指灵巧手。H100 配备有 6 个高性能数字伺服电机，能够实现输出力矩、运动速度、绝对位置等多参数的控制。H100 支持 100Hz 高频通信，可在抓取过程中实时读取状态信息，充分满足科研场景对于数据收集的需求。
+myGripper H100 is a three-finger dexterous hand developed by Shenzhen Elephant Robotics Technology Co., Ltd. specifically for robot scientific research, teaching and other application scenarios. H100 is equipped with 6 high-performance digital servo motors, which can realize the control of multiple parameters such as output torque, movement speed, absolute position, etc. H100 supports 100Hz high-frequency communication, and can read status information in real time during the grasping process, fully meeting the needs of scientific research scenarios for data collection.
 
-## 2 适配机型
+## 2 Compatible models
 ER myCobot Pro 630
 
-ER Mercury 系列
+ER Mercury series
 
-## 适用场景
-精密抓取：拿取水果、食物、工具器材等多种物品
+## Applicable scenarios
+Precision grasping: taking fruits, food, tools and equipment and other items
 
-肢体互动：结合机器人实现点赞、打招呼、手势控制等动作
+Physical interaction: combined with robots to realize actions such as likes, greetings, gesture control, etc.
 
-实验操作：在实验室中进行精密操作和实验演示
+Experimental operation: precise operation and experimental demonstration in the laboratory
 
-教学演示：用于机器人课程中的实践教学
+Teaching demonstration: used for practical teaching in robotics courses

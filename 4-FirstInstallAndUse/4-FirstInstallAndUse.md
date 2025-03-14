@@ -1,22 +1,21 @@
-## 首次安装使用
-## 1 产品清单
+## First installation and use
+## 1 Product list
 <img src="../img/kaixiang2.png" width="100%" >
 
-| 名称    | 数量     |
+| Name | Quantity |
 | :----------- | :-------------------------------------- |
-| 三指灵巧手    |   1                                |
-| USB-485模块   | 1                                 |
-| 烧录器    | 1                                   |
-| M8航插线     | 1                                  |
-| 配件包  | 1                             |
-| 法兰连接件         | 2                               |
+| Three-finger dexterous hand | 1 |
+| USB-485 module | 1 |
+| Burner | 1 |
+| M8 aviation plug | 1 |
+| Accessory package | 1 |
+| Flange connector | 2 |
 
+## 2 Unboxing video
+To be uploaded
 
-## 2 开箱视频
-待上传
-
-## 3 注意事项
-**使用三指灵巧手时应遵循如下规则：**
-* 请根据线标区分线序，如出现线标丢失、脱落、遗忘等情况，请联系我司工作人员，配合确定线序。如不联系我司工作人员，<span style="color:red;font-weight:bold;">因接错线序，导致灵巧手损坏，后果自负</span>
-* 请勿擅自烧录其他产品驱动、或使用非官方推荐方式烧录固件。<span style="color:red;font-weight:bold;">如因用户个人烧录其他固件导致设备损坏将不在售后服务内。</span>
-* <span style="color:red;font-weight:bold;">灵巧手表面若遇使用导致表面污渍，建议以清水轻拭。为避免涂层损伤，请勿使用酒精类溶剂清洁外壳及指套。</span>若因使用酒精类清洁剂导致表面损伤需维修更换，我司将依据合同条款收取相应维修费用
+## 3 Notes
+** The following rules should be followed when using the three-finger dexterous hand:**
+* Please distinguish the line sequence according to the line mark. If the line mark is lost, detached, or forgotten, please contact our staff to cooperate in determining the line sequence. If you do not contact our staff, <span style="color:red;font-weight:bold;">you will be responsible for the consequences if the smart hand is damaged due to the wrong wiring sequence</span>
+* Please do not burn other product drivers without authorization, or use unofficial recommended methods to burn firmware. <span style="color:red;font-weight:bold;">If the device is damaged due to the user's personal burning of other firmware, it will not be covered by after-sales service. </span>
+* <span style="color:red;font-weight:bold;">If the surface of the smart hand is stained by use, it is recommended to wipe it gently with clean water. To avoid coating damage, do not use alcohol solvents to clean the shell and finger sleeves. </span>If the surface is damaged due to the use of alcohol cleaners and needs to be repaired or replaced, our company will charge the corresponding repair fee according to the terms of the contract

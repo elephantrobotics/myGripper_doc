@@ -1,414 +1,424 @@
-# 基础使用
+# Basic usage
 
-## 串口控制方法
-**USB-485模块接线**：
+## Serial port control method
+**USB-485 module wiring**:
 
-连接灵巧手端的 24V，GND, 485_A(T/R+,485+) , 485_B(T/R-,485-)共 4 根线，电源为24V直流稳压电源，将模块的 USB 插口插入到电脑的 USB 接口
+Connect the 24V, GND, 485_A (T/R+, 485+), 485_B (T/R-, 485-) of the smart hand end, a total of 4 wires, the power supply is a 24V DC regulated power supply, and insert the USB port of the module into the USB port of the computer
 
 <img src="../img/new485c.png" width="100%" >
 
-485A 接入 485 转 USB 模块 A+;<br>
-485B 接入 485 转 USB 模块 B-;<br>
-24V 接入 24V 直流稳压电源正极;<br>
-GND 接入 24V 直流稳压电源负极<br>
+485A connects to the 485 to USB module A+;<br>
+485B connects to the 485 to USB module B-;<br>
+24V connects to the positive pole of the 24V DC regulated power supply;<br>
+GND connects to 24V Negative pole of DC regulated power supply<br>
 
-**串口调试助手调试**：
+**Serial port debugging assistant debugging**:
 
-用户可用[UartAssist](https://www.nitwo.com/cn/download/UartAssist.html)串口调试助手，参考下图发送相应的灵巧手指令,CRC校验码无需填写，UartAssist串口调试助手会自动生成。
+Users can use [UartAssist](https://www.nitwo.com/cn/download/UartAssist.html) serial port debugging assistant, refer to the figure below to send the corresponding dexterous hand command, CRC check code does not need to be filled in, UartAssist serial port debugging assistant will automatically generate it.
 
 <img src="../img/chuankou.png" width="70%" >
 
-**灵巧手串口默认配置**
-- 灵巧手 ID：14
-- 波特率：115200
-- 数据位：8
-- 停止位：1
-- 校验位：无校验位
+**Default configuration of the dexterous hand serial port**
+- Dexterous hand ID: 14
+- Baud rate: 115200
+- Data bit: 8
+- Stop bit: 1
+- Check bit: No check bit
 
-灵巧手采用自定义协议,一条指令由帧头（2byte）,长度（1byte）,地址码 ID（1byte）,功能码（1byte）,寄存器地址（2byte）,寄存器数据（2*n个byte）,校验码（2byte）,我们以读取灵巧手角度为例
+The dexterous hand uses a custom protocol. An instruction consists of a frame header (2byte), length (1byte), address code ID (1byte), function code (1byte), register address (2byte), register data (2*n bytes), and check code (2byte). Let's take reading the angle of the dexterous hand as an example
 
-| 帧头    | 长度  | ID  |功能码  |寄存器地址  |寄存器数据/参数 | CRC-16MODBUS校验码  |
+| Frame header | Length | ID | Function code | Register address | Register data/parameter | CRC-16MODBUS check code |
 | :--- | :--- |:--- |:--- |:--- |:--- |:--- |
 |Fe Fe| 08 |0e| 03 |00 0C|00 01|71 01|
 
-**帧头**：254 254 <br>
+**Frame header**: 254 254 <br>
 
-**长度**：指令长度 08 <br>
+**Length**: Command length 08 <br>
 
-**ID**： 0E，可以在设备中修改，默认 ID 为 14 ，0E 代表灵巧手当前 ID 为 14 <br>
+**ID**: 0E, can be modified in the device, the default ID is 14, 0E represents the current ID of the dexterous hand is 14 <br>
 
-**功能码**：识别指令是设置还是获取功能,06（对寄存器进行写操作）/03（对寄存器进行读操作）。 <br>
+**Function code**: Identify whether the instruction is a setting or acquisition function, 06 (write operation to the register)/03 (read operation to the register). <br>
 
-**寄存器地址**：00 0c 灵巧手功能对应寄存器地址 <br>
+**Register address**: 00 0c Register address corresponding to the dexterous hand function <br>
 
-**寄存器参数**：00 01 若是读取，只需填写舵机的ID,若是设置，需要填写舵机的ID和写入的参数 <br>
+**Register parameter**: 00 01 If reading, just fill in the servo ID, if setting, fill in the servo ID and the written parameters <br>
 
-**CRC 校验**：71 01 保证终端设备不去响应那些在传输过程中发生改变的数据,保证系统的安全性和效率,CRC 校验采用 16 位的循环余方法 。将帧头,长度,功能码,寄存器地址,寄存器参数所有16进制直接进行校验得到 71 01 校验码。 <br>
+**CRC check**: 71 01 Ensure that the terminal device does not respond to data that changes during transmission, ensure the security and efficiency of the system, and the CRC check adopts the 16-bit cyclic remainder method. Verify all the hexadecimal values ​​of the frame header, length, function code, register address, and register parameters directly to get the check code 71 01.<br>
 
-#### 命令总览
-- 读取固件主版本号
+#### Command Overview
+- Read the firmware major version number
 
-  指令：fe fe 08 0e 03 00 01 00 00 72 51
+  Command: fe fe 08 0e 03 00 01 00 00 72 51
 
-  功能码：03 读操作
+  Function code: 03 Read operation
 
-  参数：无
+  Parameter: None
 
-  返回：fe fe 08 0e 03 00 01 00 01 B2 90
+  Return: fe fe 08 0e 03 00 01 00 01 B2 90
 
-  标注：数据返回 00 01，返回版本号为 1
+  Note: Data return 00 01, return version number is 1
 
-- 读取固件次版本号
+- Read the firmware minor version number
 
-  指令：FE FE 08 0E 03 00 02 00 00 72 A1
+  Command: FE FE 08 0E 03 00 02 00 00 72 A1
 
-  功能码：03 读操作
+  Function code: 03 Read operation
 
-  参数：无
+  Parameter: None
 
-  返回：FE FE 08 0E 03 00 02 00 01 B2 60
+  Return: FE FE 08 0E 03 00 02 00 01 B2 60
 
-  标注：数据返回 00 01，表示返回版本号为 1
+  Note: Data return 00 01, indicating that the return version number is 1
 
-- 设置/读取设备 ID 号
-  - 设置
-  
-      指令：FE FE 08 0E 06 00 03 00 0E 76 BD
+- Set/read device ID number
+  - Set
 
-      功能码：06 写操作
+    Command: FE FE 08 0E 06 00 03 00 0E 76 BD
 
-      参数：00 0E，ID 设置范围（1-254）
+    Function code: 06 Write operation
 
-      返回：FE FE 08 0E 06 00 03 00 01 72 FD
+    Parameter: 00 0E, ID setting range (1-254)
 
-      标注：成功返回 00 01，失败返回 00 00，设备 ID 修改后,指令中的 ID 也需要修改
-      成一样才可以通信
+    Return: FE FE 08 0E 06 00 03 00 01 72 FD
 
-  - 读取
+    Note: Success returns 00 01, failure returns 00 00, after the device ID is modified, the ID in the command also needs to be modified
+    to be the same to communicate
 
-      指令：FE FE 08 0E 03 00 04 00 00 73 41
+  - Read
 
-      功能码：03 读操作
+    Command: FE FE 08 0E 03 00 04 00 00 73 41
 
-      参数：无
+    Function code: 03 Read operation
 
-      返回：FE FE 08 0E 03 00 04 00 0E B7 C0
+    Parameter: None
 
-      标注：数据返回 00 0E，表示当前灵巧手 ID 号
+    Return: FE FE 08 0E 03 00 04 00 0E B7 C0
 
-- 设置/读取 485 波特率
-  - 设置
+    Note: Data returns 00 0E, indicating the current smart hand ID number
 
-      指令：FE FE 08 0E 06 00 05 00 00 73 1D
+- Set/read 485 baud rate
 
-      功能码：06 写操作
+  - Set
 
-      参数：参数 00 00，0-115200，1-1000000，2-57600，3-19200，4-9600，5-4800，
-      如设置为 1000000，参数改为 00 01
+    Instruction: FE FE 08 0E 06 00 05 00 00 73 1D
 
-      返回：FE FE 08 0E 06 00 05 00 01 72 FD
+    Function code: 06 Write operation
 
-      标注：成功返回 00 01，失败返回 00 00
+    Parameter:  00 00, 0-115200, 1-1000000, 2-57600, 3-19200, 4-9600, 5-4800,
+    If set to 1000000, the parameter is changed to 00 01
 
-  - 读取
+    Return: FE FE 08 0E 06 00 05 00 01 72 FD
 
-      指令：FE FE 08 0E 03 00 06 00 00 B3 E0
+    Note: Success returns 00 01, failure returns 00 00
 
-      功能码：03 读操作
+  - Read
 
-      参数：无
+    Instruction: FE FE 08 0E 03 00 06 00 00 B3 E0
 
-      返回：FE FE 08 0E 03 00 06 00 00 B3 E0
+    Function code: 03 Read operation
 
-      标注：返回数据 00 00，与设值参数对应波特率的值
+    Parameter: None
 
-- 设置灵巧手使能状态
+    Return: FE FE 08 0E 03 00 06 00 00 B3 E0
 
-  指令：FE FE 08 0E 06 00 0A 00 00 B0 EC
+    Note: Return data 00 00, corresponding to the baud rate value of the setting parameter
 
-  功能码：06 写操作
+- Set the dexterous hand enable state
 
-  参数：00 00， 00 表示断使能， 00 01 表示使能
+  Instruction: FE FE 08 0E 06 00 0A 00 00 B0 EC
 
-  返回：FE FE 08 0E 06 00 0A 00 01 70 2D
+  Function code: 06 Write operation
 
-  标注：成功返回 00 01，失败返回 00 00
+  Parameter: 00 00, 00 means disconnection, 00 01 means enablement
 
-- 设置/读取灵巧手角度
-  - 设置
+  Return: FE FE 08 0E 06 00 0A 00 01 70 2D
 
-      指令：FE FE 0A 0E 06 00 0B 00 01 00 64 FF 39
+  Note: Success returns 00 01, failure returns 00 00
 
-      功能码：06 写操作
+- Set/read the dexterous hand angle
+  - Set
 
-      参数：00 01 00 64，设置舵机1角度为100
+    Instruction: FE FE 0A 0E 06 00 0B 00 01 00 64 FF 39
 
-      返回：FE FE 08 0E 06 00 0B 00 01 B0 7C
+    Function code: 06 Write operation
 
-      标注：成功返回 00 01，失败返回 00 00
+    Parameter: 00 01 00 64, set the servo 1 angle to 100
 
-  - 读取
+    Return: FE FE 08 0E 06 00 0B 00 01 B0 7C
 
-      指令：FE FE 08 0E 03 00 0C 00 01 71 01
+    Note: Success returns 00 01, failure returns 00 00
 
-      功能码：03 读操作
+  - Read
 
-      参数：无
+    Instruction: FE FE 08 0E 03 00 0C 00 01 71 01
 
-      返回：FE FE 08 0E 03 00 0C 00 64 5A C1
+    Function code: 03 Read operation
 
-      标注：返回数据 00 64，表示当前角度为 100，全开状态
+    Parameter: None
 
-- 设置舵机零位
+    Return: FE FE 08 0E 03 00 0C 00 64 5A C1
 
-  指令：FE FE 08 0E 06 00 0D 00 01 B1 9C
+    Note: Return data 00 64, indicating that the current angle is 100, fully open state
 
-  功能码： 06 写操作
+- Set the servo zero position
 
-  参数：00 01 设置舵机1零位
+  Command: FE FE 08 0E 06 00 0D 00 01 B1 9C
 
-  返回：FE FE 08 0E 06 00 0D 00 01 B1 9C
+  Function code: 06 Write operation
 
-  标注：成功返回 00 01，失败返回 00 00
+  Parameter: 00 01 Set the servo 1 zero position
 
-- 读取灵巧手夹持状态
+  Return: FE FE 08 0E 06 00 0D 00 01 B1 9C
 
-  指令：FE FE 08 0E 03 00 0E 00 00 71 61
+  Note: Success returns 00 01, failure returns 00 00
 
-  功能码：03 读操作
+- Read the gripping status of the dexterous hand
 
-  参数：无
+  Command: FE FE 08 0E 03 00 0E 00 00 71 61
 
-  返回：FE FE 08 0E 03 00 0E 00 01 B1 A0
+  Function code: 03 Read operation
 
-  标注：00 01，返回数据 0为正在运动 ,1为停止运动，未检测到夹到物,2为停止运动，检测到夹住物体,3为检测到夹住物体，物体掉落
+  Parameter: None
 
-- 设置/读取舵机 P 值
-  - 设置
+  Return: FE FE 08 0E 03 00 0E 00 01 B1 A0
 
-      指令：FE FE 0A 0E 06 00 0F 00 01 00 64 3F C8
+  Note: 00 01, return data 0 means moving ,1: Stop motion, no clamping detected, 2: Stop motion, clamping detected, 3: Clamping detected, object dropped
 
-      功能码：06 写操作
+- Set/read the servo P value
+  - Set
 
-      参数：00 01 00 64，设置舵机1 P 值为 100，设置范围（1-254）
+    Command: FE FE 0A 0E 06 00 0F 00 01 00 64 3F C8
 
-      返回：FE FE 08 0E 06 00 0F 00 01 71 3D
+    Function code: 06 Write operation
 
-      标注：成功返回 00 01，失败返回 00 00
-  - 读取
+    Parameter: 00 01 00 64, set the servo 1 P value to 100, setting range (1-254)
 
-      指令：FE FE 08 0E 03 00 10 00 01 B7 C0
-      功能码：03 读操作
-      参数：00 01 舵机1
-      返回：FE FE 08 0E 03 00 10 00 64 9C 00
-      标注：返回数据 00 64，表示当前 P 值为 100
+    Return: FE FE 08 0E 06 00 0F 00 01 71 3D
 
-- 设置/读取舵机 D 值
-  - 设置
+    Note: Success returns 00 01, failure returns 00 00
+  - Read
 
-      指令：FE FE 0A 0E 06 00 11 00 01 00 64 3D 60
+    Command: FE FE 08 0E 03 00 10 00 01 B7 C0
 
-      功能码：06 写操作
+    Function code: 03 Read operation
+    Parameter: 00 01 Servo 1
+    Return: FE FE 08 0E 03 00 10 00 64 9C 00
+    Note: Return data 00 64, indicating that the current P value is 100
 
-      参数：00 01 00 64，设置舵机1 D 值为 100，设置范围（1-254）
+- Set/read the servo D value
+  - Set
 
-      返回：FE FE 08 0E 06 00 11 00 01 77 5D
+    Command: FE FE 0A 0E 06 00 11 00 01 00 64 3D 60
 
-      标注：成功返回 00 01，失败返回 00 00
+    Function code: 06 Write operation
 
-      **若灵巧手出现抖动，可适当增大 D 值**
-  - 读取
+    Parameter: 00 01 00 64, set the servo 1 D value to 100, setting range (1-254)
 
-      指令：FE FE 08 0E 03 00 12 00 01 77 61
+    Return: FE FE 08 0E 06 00 11 00 01 77 5D
 
-      功能码：03 读操作
+    Note: Success returns 00 01, failure returns 00 00
 
-      参数：00 01 舵机1
+    **If the dexterous hand shakes, the D value can be appropriately increased**
+  - Read
 
-      返回：FE FE 08 0E 03 00 12 00 64 5C A1
+    Command: FE FE 08 0E 03 00 12 00 01 77 61
 
-      标注：返回数据 00 64，表示当前 D 值为 100
+    Function code: 03 Read operation
 
-- 设置/读取舵机 I 值
-  - 设置
+    Parameter: 00 01 Servo 1
 
-      指令：FE FE 0A 0E 06 00 13 00 01 00 00 16 18
+    Return: FE FE 08 0E 03 00 12 00 64 5C A1
 
-      功能码：06 写操作
+    Note: Return data 00 64, indicating that the current D value is 100
 
-      参数：00 01 00 00，设置舵机1 I 值为 0，设置范围（1-254）
+- Set/read servo I value
 
-      返回：FE FE 08 0E 06 00 13 00 01 B7 FC
+  - Set
 
-      标注：成功返回 00 01，失败返回 00 00
+    Command: FE FE 0A 0E 06 00 13 00 01 00 00 16 18
 
-  - 读取
+    Function code: 06 Write operation
 
-      指令：FE FE 08 0E 03 00 14 00 01 76 81
+    Parameter: 00 01 00 00, set servo 1 I value to 0, setting range (1-254)
 
-      功能码：03 读操作
+    Return: FE FE 08 0E 06 00 13 00 01 B7 FC
 
-      参数：00 01 舵机1
+    Note: Success returns 00 01, failure returns 00 00
 
-      返回：FE FE 08 0E 03 00 14 00 00 B6 40
+  - Read
 
-      标注：返回数据 00 00，表示当前 I 值为 0
+    Command: FE FE 08 0E 03 00 14 00 01 76 81
 
-- 设置/读取舵机顺时针可运行误差
-  - 设置
+    Function code: 03 Read operation
 
-      指令：FE FE 0A 0E 06 00 15 00 01 00 03 17 D0
+    Parameter: 00 01 Servo 1
 
-      功能码：06 写操作
+    Return: FE FE 08 0E 03 00 14 00 00 B6 40
 
-      参数：00 01 00 03，设置舵机1的误差值为 3，设置范围（0-16）
+    Note: Return data 00 00, indicating that the current I value is 0
 
-      返回：FE FE 08 0E 06 00 15 00 01 B6 1C
+- Set/read the clockwise running error of the servo
 
-      标注：成功返回 00 01，失败返回 00 00
-  - 读取
+  - Set
 
-      指令：FE FE 08 0E 03 00 16 00 01 B6 20
+    Command: FE FE 0A 0E 06 00 15 00 01 00 03 17 D0
 
-      功能码：03 读操作
+    Function code: 06 Write operation
 
-      参数：00 01 舵机1
+    Parameter: 00 01 00 03, set the error value of servo 1 to 3, setting range (0-16)
 
-      返回：FE FE 08 0E 03 00 16 00 01 B6 20
+    Return: FE FE 08 0E 06 00 15 00 01 B6 1C
 
-      标注：返回数据 00 01，表示当前值为 1
+    Mark: Success returns 00 01, failure returns 00 00
 
+  - Read
 
-- 设置/读取舵机逆时针可运行误差
-  - 设置
+    Command: FE FE 08 0E 03 00 16 00 01 B6 20
 
-      指令：FE FE 0A 0E 06 00 17 00 01 00 03 D7 A9
+    Function code: 03 Read operation
 
-      功能码：06 写操作
+    Parameter: 00 01 Servo 1
 
-      参数：00 01 00 03，设置舵机的误差值为 3，设置范围（0-16）
+    Return: FE FE 08 0E 03 00 16 00 01 B6 20
 
-      返回：FE FE 08 0E 06 00 17 00 01 76 BD
+    Mark: Return data 00 01, indicating that the current value is 1
 
-      标注：成功返回 00 01，失败返回 00 00
+- Set/read the counterclockwise operational error of the servo
 
-  - 读取
+  - Set
 
-      指令：FE FE 08 0E 03 00 18 00 01 75 41
+    Command: FE FE 0A 0E 06 00 17 00 01 00 03 D7 A9
 
-      功能码：03 读操作
+    Function code: 06 Write operation
 
-      参数：00 01 舵机1
+    Parameter: 00 01 00 03, set the error value of the servo 3, setting range (0-16)
 
-      返回：FE FE 08 0E 03 00 18 00 01 75 41
+    Return: FE FE 08 0E 06 00 17 00 01 76 BD
 
-      标注：返回数据 00 01，表示当前值为 1
+    Note: Success returns 00 01, failure returns 00 00
 
-- 设置/读取舵机最小启动力
-  - 设置
+  - Read
 
-      指令：FE FE 0A 0E 06 00 19 00 01 00 18 1D 80
+    Command: FE FE 08 0E 03 00 18 00 01 75 41
 
-      功能码： 06 写操作
+    Function code: 03 Read operation
 
-      参数：00 01 00 18 设置舵机1的值为24
+    Parameter: 00 01 Servo 1
 
-      返回：FE FE 08 0E 06 00 19 00 01 B5 DC
+    Return: FE FE 08 0E 03 00 18 00 01 75 41
 
-      标注：成功返回 00 01，失败返回 00 00
-  - 读取
+    Note: Return data 00 01, indicating that the current value is 1
 
-      指令：FE FE 08 0E 03 00 1A 00 01 B5 E0
+- Set/read the minimum starting force of the servo
 
-      功能码：03 读操作
+  - Set
 
-      参数：00 01 舵机1
+    Command: FE FE 0A 0E 06 00 19 00 01 00 18 1D 80
 
-      返回：FE FE 08 0E 03 00 1A 00 18 7F 21
+    Function code: 06 Write operation
 
-      标注：返回数据 00 18，表示当前值为 24
+    Parameter: 00 01 00 18 Set the value of servo 1 to 24
 
-- 设置/读取舵机扭矩
-  - 设置
+    Return: FE FE 08 0E 06 00 19 00 01 B5 DC
 
-      指令：FE FE 0A 0E 06 00 1B 00 01 00 64 3C F8
+    Note: Success returns 00 01, failure returns 00 00
 
-      功能码： 06 写操作
+  - Read
 
-      参数：00 01 00 64 设置舵机1扭力为 100，参数范围（0-100）
+    Command: FE FE 08 0E 03 00 1A 00 01 B5 E0
 
-      返回：FE FE 08 0E 06 00 1B 00 01 75 7D
+    Function code: 03 Read operation
 
-      标注：成功返回 00 01，失败返回 00 00
+    Parameter: 00 01 Servo 1
 
-  - 读取
+    Return: FE FE 08 0E 03 00 1A 00 18 7F 21
 
-      指令：FE FE 08 0E 03 00 1C 00 01 B4 00
+    Note: Return data 00 18, indicating that the current value is 24
 
-      功能码：03 读操作
+- Set/read servo torque
 
-      参数：00 01 舵机1 
+  - Set
 
-      返回：FE FE 08 0E 03 00 1C 01 2C 39 C1
+    Command: FE FE 0A 0E 06 00 1B 00 01 00 64 3C F8
 
-- 设置/读取舵机速度
-  - 设置
+    Function code: 06 Write operation
 
-      指令：FE FE 0A 0E 06 00 20 00 01 00 14 1D 1C
+    Parameter: 00 01 00 64 Set the torque of servo 1 to 100, parameter range (0-100)
 
-      功能码： 06 写操作
+    Return: FE FE 08 0E 06 00 1B 00 01 75 7D
 
-      参数：00 01 00 14 设置舵机1速度为 20，参数范围（1-100）
+    Note: Success returns 00 01, failure returns 00 00
 
-      返回：FE FE 08 0E 06 00 20 00 01 B8 0C
+  - Read
 
-      标注：成功返回 00 01，失败返回 00 00
-  - 读取
+    Command: FE FE 08 0E 03 00 1C 00 01 B4 00
 
-      指令：FE FE 08 0E 03 00 21 00 01 78 91
+    Function code: 03 Read operation
 
-      功能码：03 读操作
+    Parameter: 00 01 Servo 1
 
-      参数：00 01 舵机1
+    Return: FE FE 08 0E 03 00 1C 01 2C 39 C1
 
-      返回：FE FE 08 0E 03 00 21 00 32 6D D1
+- Set/read servo speed
 
-      标注：00 32 数据返回为 50
+  - Set
 
+    Command: FE FE 0A 0E 06 00 20 00 01 00 14 1D 1C
 
-- 设置灵巧手手势
-  - 设置
+    Function code: 06 Write operation
 
-      指令：FE FE 08 0E 06 00 34 01 01 00 35 EC
+    Parameter: 00 01 00 14 Set the speed of servo 1 to 20, parameter range (1-100)
 
-      功能码： 06 写操作
+    Return: FE FE 08 0E 06 00 20 00 01 B8 0C
 
-      参数：01 01 设置手势（0-4），手势闭合程度（0-5）
+    Note: Success returns 00 01, failure returns 00 00
 
-      返回：FE FE 08 0E 06 00 34 00 01 B8 0C
+  - Read
 
-      标注：成功返回 00 01，失败返回 00 00
+    Instruction: FE FE 08 0E 03 00 21 00 01 78 91
 
-- 设置/读取灵巧手角度
-  - 设置
+    Function code: 03 Read operation
 
-      指令：FE FE 12 0E 06 00 2D 00 00 00 00 00 00 00 00 00 00 00 00 00 14 23 FC
+    Parameter: 00 01 Servo 1
 
-      功能码： 06 写操作
+    Return: FE FE 08 0E 03 00 21 00 32 6D D1
 
-      参数：00 00 00 00 00 00 00 00 00 00 00 00 00 14 前面12个字节代表角度（0-100），最后两个字节代表速度 （0-100）
+    Note: 00 32 Data returned is 50
 
-      返回：FE FE 08 0E 06 00 2D 00 01 7B 9D
+- Set the dexterous hand gesture
+  - Set
 
-      标注：成功返回 00 01，失败返回 00 00
-  - 读取
+    Command: FE FE 08 0E 06 00 34 01 01 00 35 EC
 
-      指令：FE FE 08 0E 03 00 32 00 00 7D A1
+    Function code: 06 Write operation
 
-      功能码：03 读操作
+    Parameter: 01 01 Set gesture (0-4), gesture closure degree (0-5)
 
-      参数：无
+    Return: FE FE 08 0E 06 00 34 00 01 B8 0C
 
-      返回：FE FE 0C 0E 03 00 32 00 00 00 01 00 00 00 00 00 01 00 00 84 74
+    Note: Success returns 00 01, failure returns 00 00
 
-      标注：00 00 00 01 00 00 00 00 00 01 00 00 数据返回为 [0, 1, 0, 0, 1, 0]
+  - Set/read the dexterous hand angle
+  - Set
+
+    Command: FE FE 12 0E 06 00 2D 00 00 00 00 00 00 00 00 00 00 00 00 00 14 23 FC
+
+    Function code: 06 Write operation
+
+    Parameter: 00 00 00 00 00 00 00 00 00 00 00 00 00 14 The first 12 bytes represent the angle (0-100), and the last two bytes represent the speed (0-100)
+
+    Return: FE FE 08 0E 06 00 2D 00 01 7B 9D
+
+    Note: Success returns 00 01, failure returns 00 00
+
+  - Read
+
+    Instruction: FE FE 08 0E 03 00 32 00 00 7D A1
+
+    Function code: 03 Read operation
+
+    Parameter: None
+
+    Return: FE FE 0C 0E 03 00 32 00 00 00 01 00 00 00 00 00 01 00 00 84 74
+
+    Note: 00 00 00 01 00 00 00 00 00 01 00 00 The data returned is [0, 1, 0, 0, 1, 0]

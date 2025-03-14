@@ -1,29 +1,29 @@
-# 水星A1控制
+# Mercury A1 Control
 
-## 硬件安装
-先将连接件安装到灵巧手上
+## Hardware Installation
+First install the connector on the smart hand
 
 <img src="../img/a1.png" width="100%" >
 
-然后将另一个连接件安装到机械臂末端法兰上
+Then install another connector on the end flange of the robot arm
 
 <img src="../img/a2.png" width="100%" >
 
-之后再将灵巧手安装到末端连接法兰上，上下左右4个孔位都用螺丝固定
+Then install the smart hand on the end connection flange, and fix the 4 holes on the top, bottom, left and right with screws
 
 <img src="../img/a3.png" width="100%" >
 
-最后用M8航插线连接拧紧
+Finally, connect and tighten with M8 aviation plug wire
 
 <img src="../img/a4.png" width="100%" >
 
-## 软件安装
-依赖库安装
+## Software Installation
+Dependency Library Installation
 ```bash
 pip install pymycobot --upgrade
 ```
 
-## 案例程序
+## Example program
 
 ```python
 from pymycobot import Mercury
@@ -59,6 +59,6 @@ for i in range(len(target_angles)):
         wait()
 ```
 
-## 效果展示
+## Effect display
 
-<img src="../img/demo2.gif" width="70%" >
+<img src="../img/demo2.gif" width="90%" >

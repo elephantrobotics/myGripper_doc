@@ -1,29 +1,29 @@
-# python USB-485库控制
+# Python USB-485 library control
 
-## 硬件连接
+## Hardware connection
 
-连接灵巧手端的 24V，GND, 485_A(T/R+,485+) , 485_B(T/R-,485-)共 4 根线，电源为24V直流稳压电源，将模块的 USB 插口插入到电脑的 USB 接口
+Connect the 24V, GND, 485_A (T/R+, 485+), 485_B (T/R-, 485-) of the smart hand end, a total of 4 wires, the power supply is a 24V DC regulated power supply, and insert the USB port of the module into the USB port of the computer
 
 <img src="../img/new485c.png" width="100%" >
 
-485A 接入 485 转 USB 模块 A+;<br>
-485B 接入 485 转 USB 模块 B-;<br>
-24V 接入 24V 直流稳压电源正极;<br>
-GND 接入 24V 直流稳压电源负极<br>
+485A connects to the 485 to USB module A+;<br>
+485B connects to the 485 to USB module B-;<br>
+24V connects to the positive pole of the 24V DC regulated power supply;<br>
+GND connects to the negative pole of the 24V DC regulated power supply<br>
 
-## 软件安装
-**驱动库安装**
-[点击下载驱动库](https://github.com/elephantrobotics/Myhand)
+## Software installation
+**Driver library installation**
+[Click to download the driver library](https://github.com/elephantrobotics/Myhand)
 
 <img src="../img/git.png" width="50%" >
 
-##### 串口依赖库安装
-在电脑终端执行下面命令，安装依赖库
+##### Serial port dependency library installation
+Execute the following command in the computer terminal to install the dependency library
 ```bash
 pip install pyserial
 ```
 
-## 案例程序
+## Example program
 
 ```python
 from MyHand import MyGripper_H100
@@ -43,7 +43,7 @@ if __name__=="__main__":
     hand.set_gripper_pose(0,0)
     time.sleep(2)
 ```
-## 效果展示
+## Effect display
 
-<img src="../img/demo1.gif" width="70%" >
+<img src="../img/demo1.gif" width="90%" >
 

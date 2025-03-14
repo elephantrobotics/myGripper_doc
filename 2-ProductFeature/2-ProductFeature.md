@@ -1,39 +1,40 @@
-# 产品特性
-## 1 产品规格参数
-| 名称    | myGripper H100 三指灵巧手      |
+# Product Features
+## 1 Product Specifications
+| Name | myGripper H100 three-finger dexterous hand |
 | :----------- | :-------------------------------------- |
-| 握持范围     | 0 - 130mm                                |
-| 指尖数   | 3指，分别对应人手的：拇指 食指 无名指                                  |
-| 使用寿命     | 10W次及以上                                    |
-| 可活动关节     | 6个                                  |
-| 电机类型   | 伺服舵机，支持电流、位置、速度控制                             |
-| 重量         | 780g                               |
-| 额定负载   | 500g                                  |
-| 电源参数  | 24V2A                                 |
-| 固定方法     | 螺丝固定                                |
-| 使用环境要求 | 常温常压                                |
-| 控制接口     | RS485控制                        |
+| Gripping range | 0 - 130mm |
+| Number of fingertips | 3 fingers, corresponding to the thumb, index finger and ring finger of the human hand |
+| Service life | 10W times and above |
+| Movable joints | 6 |
+| Motor type | Servo servo, supporting current, position and speed control |
+| Weight | 780g |
+| Rated load | 500g |
+| Power supply parameters | 24V2A |
+| Fixing method | Screw fixing |
+| Environment requirements for use | Normal temperature and pressure |
+| Control interface | RS485 control |
+| Cable interface model | M8-8PIN |
 
-**引脚线序说明**
+
+**Pin sequence description**
 
 <img src="../img/IO1.png" width="50%" >
 
 <img src="../img/IO2.png" width="50%" >
 
-编号1,5 连接GND与24V，编号2,3 为控制 IO 输入，编号6,7 为 IO 输出，编
-号4,8为485 通信，是与灵巧手接收与发送指令
+Numbers 1 and 5 connect GND and 24V, numbers 2 and 3 control IO input, numbers 6 and 7 are IO output, and numbers 4 and 8 are 485 communications, which are used to receive and send instructions with the dexterous hand
 
-**注意事项**：
+**Notes**:
 
-为保障灵巧手设备安全运行，请严格根据线标区分线序，如出现线标丢失、脱落、遗忘等情况，请立即通过官方渠道联系技术团队。若因未规范操作导致损坏，我司将依据合同条款承担相应维修费用。
+To ensure the safe operation of the dexterous hand equipment, please strictly distinguish the line sequence according to the line mark. If the line mark is lost, detached, or forgotten, please contact the technical team through official channels immediately. If damage is caused by non-standard operation, our company will bear the corresponding repair costs according to the terms of the contract.
 
-## 2 主控制器规格参数表
+## 2 Main controller specification parameter table
 
-| 名称    | ESP32     |
+| Name | ESP32 |
 | :----------- | :-------------------------------------- |
-| 核心参数     | 240MHz dual core. 600 DMIPS, 520KB SRAM. Wi-Fi, dual mode Bluetooth                               |
-| Flash  | 4MB                                  |
+| Core parameters | 240MHz dual core. 600 DMIPS, 520KB SRAM. Wi-Fi, dual mode Bluetooth |
+| Flash | 4MB |
 
-## 3 结构参数
+## 3 Structural parameters
 
 <img src="../img/3D.png" width="100%" >

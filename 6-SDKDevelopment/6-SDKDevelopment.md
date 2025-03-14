@@ -293,7 +293,7 @@ pip install pyserial
     - `3`: Middle finger and index finger pinching
     - `4`: Three-finger pinching
   - `value`: `(int)` Opening and closing degree, value range `0-15`, closing degree, the higher the level, the closer it is
-- `flag`: `(int)` Idle flag, when flag 1, the idle finger can be freely controlled
+  - `flag`: `(int)` Idle flag, when flag 1, the idle finger can be freely controlled
 
 - **Return:** `(int)` 0-1
   - `0`: Failure

@@ -286,12 +286,13 @@ pip install pyserial
 
 - **功能:** 设置夹爪捏合动作及开合程度
 - **参数:** 
-  - `pose`: `(int)` 动作,取值范围 `0-3`
-    - `0`：食指与拇指捏合
-    - `1`: 中指于拇指捏合
-    - `2`: 三指握住
-    - `3`: 双指夹持
-  - `value`: `(int)` 开合程度,取值范围 `0-5`,合拢程度,等级越高越合拢
+  - `pose`: `(int)` 动作,取值范围 `0-4`
+    - `0`：全关节回零
+    - `1`：食指与拇指捏合
+    - `2`: 中指与拇指捏合
+    - `3`: 中指与食指捏合
+    - `4`: 三指捏合
+  - `value`: `(int)` 开合程度,取值范围 `0-15`,合拢程度,等级越高越合拢
   - `flag`: `(int)` 空闲标志,标志1时,空闲手指可自由操控
     
 - **返回:**`(int)` 0-1
@@ -299,14 +300,26 @@ pip install pyserial
   - `1`: 成功
 
 #### 测试程序
+
+
 ```python
 from MyHand import MyGripper_H100
 import time
 if __name__=="__main__":
-    g=MyGripper_H100("COM27",baudrate=115200,id=14)##填写实际的串口号和波特率和夹爪ID
-    print("夹爪的实际ID为:",g.get_gripper_Id())
-    print(g.set_gripper_joint_angle(0,50))
+    hand=MyGripper_H100("COM8")
+    hand.set_gripper_pose(0,0)
     time.sleep(2)
-    print(g.set_gripper_joint_angle(0,0))
+    hand.set_gripper_pose(1,5)
+    time.sleep(5)
+    hand.set_gripper_pose(2,5)
+    time.sleep(5)
+    hand.set_gripper_pose(3,5)
+    time.sleep(5)
+    hand.set_gripper_pose(4,15)
+    time.sleep(5)
+    hand.set_gripper_pose(0,0)
     time.sleep(2)
 ```
+#### 效果展示
+
+<img src="../img/demo1.gif" width="70%" >

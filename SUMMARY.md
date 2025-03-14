@@ -13,6 +13,6 @@
 
 * [9 About Us](9-AboutUs/9-AboutUs.md)
 
- * [9.1 Elephant Robot](./9-AboutUs/9.1-company.md)
- 
- * [9.2 Contact Us](./9-AboutUs/9.2-contact.md)
+  * [9.1 Elephant Robot](./9-AboutUs/9.1-company.md)
+  
+  * [9.2 Contact Us](./9-AboutUs/9.2-contact.md)

@@ -1,6 +1,6 @@
 ## First installation and use
 ## 1 Product list
-<img src="../img/kaixiang2.png" width="100%" >
+<img src="../img/kaixiang3.png" width="100%" >
 
 | Name | Quantity |
 | :----------- | :-------------------------------------- |

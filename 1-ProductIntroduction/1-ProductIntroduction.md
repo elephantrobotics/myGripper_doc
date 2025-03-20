@@ -1,6 +1,6 @@
 # 1 Product Introduction
 
-<img src="../img/myhand.png" width="50%" >
+<img src="../img/myhand.jpg" width="50%" >
 
 myGripper H100 is a three-finger dexterous hand developed by Shenzhen Elephant Robotics Technology Co., Ltd. specifically for robot scientific research, teaching and other application scenarios. H100 is equipped with 6 high-performance digital servo motors, which can realize the control of multiple parameters such as output torque, movement speed, absolute position, etc. H100 supports 100Hz high-frequency communication, and can read status information in real time during the grasping process, fully meeting the needs of scientific research scenarios for data collection.
 

@@ -13,7 +13,11 @@
 
 
 ## 2 开箱视频
-待上传
+<video id="my-video" class="video-js" controls preload="auto" width="100%"
+poster="" data-setup='{"aspectRatio":"16:9"}'>
+  <source src="https://download.elephantrobotics.com/Product%20_disassembly_video/myCobot%20320%202022%20%E7%B3%BB%E5%88%97%E6%8B%86%E8%A3%85.mp4"></video>
+
+---
 
 ## 3 注意事项
 **使用三指灵巧手时应遵循如下规则：**

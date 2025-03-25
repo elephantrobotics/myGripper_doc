@@ -12,7 +12,11 @@
 | Flange connector | 2 |
 
 ## 2 Unboxing video
-To be uploaded
+<video id="my-video" class="video-js" controls preload="auto" width="100%"
+poster="" data-setup='{"aspectRatio":"16:9"}'>
+  <source src="https://download.elephantrobotics.com/video/myGripper%20H100%20Unboxing0321.mp4"></video>
+
+---
 
 ## 3 Notes
 **The following rules should be followed when using the three-finger dexterous hand**:

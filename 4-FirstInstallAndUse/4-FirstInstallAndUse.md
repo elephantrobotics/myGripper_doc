@@ -15,7 +15,7 @@
 ## 2 开箱视频
 <video id="my-video" class="video-js" controls preload="auto" width="100%"
 poster="" data-setup='{"aspectRatio":"16:9"}'>
-  <source src="https://download.elephantrobotics.com/Product%20_disassembly_video/myCobot%20320%202022%20%E7%B3%BB%E5%88%97%E6%8B%86%E8%A3%85.mp4"></video>
+  <source src="https://download.elephantrobotics.com/video/myGripper%20H100%20%E4%B8%89%E6%8C%87%E4%BA%A7%E5%93%81%E5%BC%80%E7%AE%B10321.mp4"></video>
 
 ---
 

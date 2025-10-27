@@ -243,7 +243,7 @@ pip install pyserial
 - **Function:** Set the torque of the gripper joint ID
 - **Parameters:**
   - `id`: `(int)` Joint ID, value range `1-6`
-  - `value`: `(int)` Torque, value range `0-300`
+  - `value`: `(int)` Torque, value range `0-100`
 - **Return:** `(int)` 0-1
   - `0`: Failed
   - `1`: Success

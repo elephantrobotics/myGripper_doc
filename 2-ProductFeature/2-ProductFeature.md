@@ -37,3 +37,7 @@
 ## 3 结构参数
 
 <img src="../img/3D.png" width="100%" >
+
+## 4 电机对应ID
+
+<img src="../img/hand-cn.png" width="100%" >

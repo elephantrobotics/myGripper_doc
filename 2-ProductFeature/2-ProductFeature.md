@@ -38,3 +38,9 @@ To ensure the safe operation of the dexterous hand equipment, please strictly di
 ## 3 Structural parameters
 
 <img src="../img/3D.png" width="100%" >
+
+
+## 4 Motor Corresponding ID
+
+<img src="../img/myhand EN.png" width="100%" >
+
